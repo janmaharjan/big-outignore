@@ -1,0 +1,45 @@
+<div th:replace="/shared/header"></div>
+
+<div class="box">
+            <div class="box-header with-border">
+                <a th:href="@{'/'+${pageURI}+'/create'}" class="btn btn-primary btn-xs" title="Add Plant">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered table-striped table-hover">
+                  <thead>
+                      <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                </tr>
+                  </thead>
+                <tbody>
+                <tr th:each="record:${records}">
+                    <td th:text="${record.id}"></td>
+                    <td th:text="${record.name}"></td>
+                    <td>
+                          <a th:href="@{'/'+${pageURI}+'/edit/'+${record.id}}" class="btn btn-warning btn-xs" title="Edit Session">
+                    <span class="glyphicon glyphicon-plus"></span>
+                        </a> 
+                        <a th:href="@{'/'+${pageURI}+'/delete/'+${record.id}}" onclick="return confirm('Are you Sure?')" class="btn btn-danger btn-xs" title="Delete Session">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </a>
+                    </td>
+                </tr>
+              </tbody></table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+              <ul class="pagination pagination-sm no-margin pull-right">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">»</a></li>
+              </ul>
+            </div>
+          </div>
+<div th:replace="/shared/footer"></div>
